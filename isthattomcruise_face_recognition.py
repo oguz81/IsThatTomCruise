@@ -35,7 +35,7 @@ def whois(prediction):
 s = 0
 if len(sys.argv) > 1:
   s = sys.argv[1]
-source = cv2.VideoCapture("C:\\Users\\HP\\OneDrive\\Resimler\\videoplayback.mp4") #
+source = cv2.VideoCapture("#__path_to_video_here__#") #
 
 #############################
 win_name = "Face Detection"
@@ -43,7 +43,7 @@ cv2.namedWindow(win_name, cv2.WINDOW_NORMAL)
 output = "null"
 # load the face detection model into the code
 net = cv2.dnn.readNetFromCaffe("deploy.prototxt", "res10_300x300_ssd_iter_140000_fp16.caffemodel")
-model = tf.keras.models.load_model('C:\\Users\\HP\\Downloads\\bs64_e12_6_9and5_9.keras')
+model = tf.keras.models.load_model('#__path_to_model_here__#')  # load the model
 
 # specify the window size
 in_width = 300
@@ -93,7 +93,7 @@ while cv2.waitKey(1) != 27:
       if current_time - last_time > 0.3: # take screenshot for every 0.3 seconds
         frameCopy = frame.copy()
         #frameCopy = cv2.cvtColor(frameCopy, cv2.COLOR_RGB2BGR)
-        name_is = "C:\\Users\\HP\\OneDrive\\Resimler\\face" + str(current_time) + ".png"
+        name_is = "#__path_to_frame_saved__#" + str(current_time) + ".png"
         face = frameCopy[y_left_bottom:y_right_top, x_left_bottom:x_right_top] # problem is y_left_bottom
         my_image = cv2.imwrite(name_is, face)
         img =  image.load_img(name_is, target_size=(196, 196))
